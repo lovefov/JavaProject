@@ -1,0 +1,6 @@
+scale on  就是换了更强的机器添加硬件也算 还有就是硬件扩展与性能提升不是线性的
+多CPU在资源竞争所产生开销也是非常大的.
+scale out 向外扩展 添加服务器  DNS A记录 也可以进行load blance 但是有缺陷
+lb 算法 Round Robin 轮询  WRR 加权轮询
+
+cluster 分类: LB 集群

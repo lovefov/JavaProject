@@ -1,0 +1,7 @@
+awk 是神器这个事情没必要解释
+
+最常用的功能 awk '{print$n}' file.name  默认以空格为分隔符 以$n 为列号 打印出相应列的内容 $0 则打印出整行的内容
+awk -F 制定分隔符 awk -F '[ab] 指定多个分隔符 -F: 直接以: 为分隔符
+awk 'NR>1 print{}' 处理从第二行开始的log print 与C++/C 中的print语法相同 格式化字符串
+
+ed2k://|file|%E7%A5%9E%E7%9B%BE%E5%B1%80%E7%89%B9%E5%B7%A5.Marvels.Agents.of.S.H.I.E.L.D.S05E01.%E4%B8%AD%E8%8B%B1%E5%AD%97%E5%B9%95.WEB-HR.AAC.720P.x264-%E4%BA%BA%E4%BA%BA%E5%BD%B1%E8%A7%86.mp4|493818756|065a9fac0c60ab8a0dc9004b3f29caa5|h=d2rcuwr5mmnrwpjvog4mq3s7h3zjzuks|/
