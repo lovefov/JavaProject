@@ -1,0 +1,13 @@
+storescu
+
+findscu  patient name ,patient id ,issuer of patient(就诊医院),这些信息查找患者.支持模糊查询,
+
+getscu
+
+findscu -c DCM4CHEE@10.10.0.163:11112 -- ./findscu/study.xml | grep "(0020,000D)" |awk 'NR>1 {print $3}' | sed 's/\[//g' | sed 's/\]//g'
+
+列出所有的study instance uid
+
+findscu -c DCM4CHEE@10.10.0.163:11112 -- ./findscu/study.xml | grep "(0010,0010)" |awk -F '[\[\]]+' 'NR>1 {print $2}'
+
+列出所有的患者姓名
