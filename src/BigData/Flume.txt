@@ -1,0 +1,15 @@
+flume 架构 agent channel sink
+1.在数据生成器的agent 到datacollector 再到hdfs
+2.flume event =header + log信息 通过byte[] 字节流的方式
+在source 到destination之间
+3.Flume agent
+
+channel: jdbc channel  filesystem channel memory channel
+
+a.source 从事件生成器收集数据 以event的方式给一个或者多个channel
+b.channel 可以给event 提供缓存到buffer 知道sink 消费掉
+是source和sink 之间的桥梁 channel是事务性的
+c.sink沉槽
+ 有hdfs sink hbase sink kafak sink
+
+
