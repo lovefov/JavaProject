@@ -11,4 +11,3 @@ findscu -c DCM4CHEE@10.10.0.163:11112 -- ./findscu/study.xml | grep "(0020,000D)
 findscu -c DCM4CHEE@10.10.0.163:11112 -- ./findscu/study.xml | grep "(0010,0010)" |awk -F '[\[\]]+' 'NR>1 {print $2}'
 
 列出所有的患者姓名
-

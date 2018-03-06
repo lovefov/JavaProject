@@ -1,0 +1,24 @@
+固定调度(静态调度)
+    rr:轮调 轮询
+    wrr:加权轮询
+    sh:source hash 源地址哈希(破坏了公平调度的效果 session affinity会话绑定)
+    dh:destination hash 目标地址哈希
+
+动态调度
+    LC 最少链接 least connection
+    active*256+inactive 比较几个server的这个数值 挑小的给链接
+
+    wlc 加权最少链接
+    加了个权 性能越好权重越高
+
+    sed 最短期望延迟 (active+1)*256/weight
+
+    nq never queue 永不怕排队
+    LBLC 基于本地的最少链接
+
+cookie 用于身份验证 是server生成的 发给浏览器,浏览器给server发信息
+的时候把身份传给server
+
+session sharing: session 共享集群 所有session 彼此之间相互同步
+
+

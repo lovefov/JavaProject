@@ -12,27 +12,4 @@ b.channel 可以给event 提供缓存到buffer 知道sink 消费掉
 c.sink沉槽
  有hdfs sink hbase sink kafak sink
 
-安装Flume
-java,环境变量,bin目录 相关conf 的配置
 
-命名agent 组件
-配置source
-配置channel
-配置sink
-
-a1.sources=r1,r2
-a1.sink=s1,s2
-a1.channels=c1,c2
-#source-r1
-a1.source.r1.type=
-a1.source.r1.yyy=
-a1.source.r1.xxx=
-
-#sink-s1
-a1.sinks.s1.type=
-a1.sinks.s1.xxx=
-
-#channel
-a1.channels.c1.type=
-a1.channels.c1.type=
- 

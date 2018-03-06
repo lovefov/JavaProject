@@ -1,0 +1,26 @@
+scale on  就是换了更强的机器添加硬件也算 还有就是硬件扩展与性能提升不是线性的
+多CPU在资源竞争所产生开销也是非常大的.
+scale out 向外扩展 添加服务器  DNS A记录 也可以进行load blance 但是有缺陷
+lb 算法 Round Robin 轮询  WRR 加权轮询
+raft 分布一致性算法
+split-brain 左右不协调了(先把它给shutdown了,阻止脑裂,通过电源交换机关闭刮掉的server)
+这一招叫 STONITH shoot the other node in the head
+fencing :隔离
+节点级别: STONTIH
+资源级别:
+避免集群分裂:node 的个数都是奇数个 所以最少的HA节点是3个
+
+cluster 分类:
+LB 集群(并发能力)
+    - 并发处理能力
+    -
+HA集群 High Availability(始终在线)
+     - 在线时间/(在线时间+故障处理时间)
+     - 99%(3天) 99.9%(0.3天)99.99%(0.03天) 99.999%(0.003天)
+分布式集群 Distributed Cluster 用于处理4v的数据 大体量 种类多 价值密度低 大容量
+
+HP(HPC) High Performance (高性能)
+        - 向量机
+        - 并行处理集群
+           - 分布式文件系统
+           - 将大任务切割为小任务,分别进行处理的机制

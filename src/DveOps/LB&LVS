@@ -1,0 +1,74 @@
+负载均衡集群:特点保证高并发能力,显然这个集群的负载均衡器或者集群的前端机就很重要了.还有分布一致性算法
+什么paxos raft 什么拜占庭将军问题
+负载均衡可以在软家和硬件层面上实现
+
+Hardware
+  F5,Big IP
+  Citrix,Netscaler
+  A10
+
+Software
+  四层
+    LVS不解析高层协议效率更高,高级特性不支持
+  七层(反向代理) 操纵能力更强
+    nginx
+        http SMTP POP3 IMAP
+    haproxy
+        http tcp(MySQL.smtp)
+
+
+  四和七主要看应用的场景和需求
+
+
+  LVS 工作在linux的内核上 iptables 的input链上的 注意 LVS 不能和iptables共同使用
+
+  linux virtual server
+
+  director    real server
+
+
+  iptables 两段式的 iptables写规则 netfilter
+  LVS 也是两段式的
+   - ipvsadm: 管理集群服务的命令行工具
+   - ipvs: 内核上的工作在input 钩子如果发现寻找集群服务就强制重写报文的目标地址
+
+
+   LVS 的几个IP地址 VIP 接受服务请求的ip  rip realsver ip dip 面向rs 通信的ip
+
+   cip clien ip 就是访问集群的客户的ip
+
+   LVS有三种类型
+   LVS-NAT : 地址转换
+   LVS-DR : 直接路由
+   LVS-TUN : 隧道
+
+   DNAT 一次访问流程 cip --> vip --> ipvs -->rip2 --> LVS --> cip
+
+   NAT:
+       集群节点都在一个ip网络中 director 和realserver
+       rip 是私有地址,仅用于节点间通信
+       director 位于client 和real server 之间的 负责进出的所有通信
+       real server 必须将网关指向dip
+       支持端口映射
+       real server 可以是任意操作系统
+       director server 可能成为系统瓶颈
+
+   Direct Router:
+        集群节点跟director必须同在一个物理网络中:
+        rip可以不是私有地址方便管理
+        director只处理入站请求响应报文由rs 直接发给client
+        realserver 不能将网关指向dip ;
+        director 不支持端口映射
+        real server 必须可以影藏IP地址
+
+   TUN:(隧道就是用一个IP包包裹另一个IP包)
+        类似于DR在转发的时候重新封包
+        集群节点可以跨越互联网
+        rip 必须是公网地址
+        rs 响应报文不能通过director
+        只有支持隧道功能的os 才能用于real server
+        不支持端口映射
+
+
+
+
